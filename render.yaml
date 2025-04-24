@@ -4,13 +4,28 @@ services:
     env: docker
     plan: free
     healthCheckPath: /healthz
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_TYPE
         value: postgres
-      - key: DB_URL
+      - key: DB_USER
+        value: postgres
+      - key: DB_NAME
+        value: postgres
+      - key: DB_SSL
+        value: "true"
+      - key: DB_HOST
         fromDatabase:
           name: solar-shrine-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: solar-shrine-db
+          property: port
+      - key: DB_PASS
+        fromDatabase:
+          name: solar-shrine-db
+          property: password
       - key: WIKI_ADMIN_EMAIL
         value: admin@solarshrine.org
     domains:

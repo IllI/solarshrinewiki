@@ -1,0 +1,20 @@
+# Wiki.js Configuration
+
+port: 3000
+
+db:
+  type: postgres
+  # Use environment variable for the connection string
+
+bindIP: 0.0.0.0
+logLevel: info
+
+# Default administrator account
+admin:
+  email: admin@solarshrine.org
+
+# Set to false since we're on Render's CDN
+ssl:
+  enabled: false
+
+# The rest will use defaults 
