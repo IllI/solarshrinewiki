@@ -3,6 +3,7 @@ services:
     name: solar-shrine-wiki
     env: docker
     plan: free
+    region: oregon
     healthCheckPath: /healthz
     dockerfilePath: ./Dockerfile
     envVars:
@@ -15,15 +16,18 @@ services:
       - key: DB_SSL
         value: "true"
       - key: DB_HOST
-        fromDatabase:
+        fromService:
+          type: postgres
           name: solar-shrine-db
           property: host
       - key: DB_PORT
-        fromDatabase:
+        fromService:
+          type: postgres
           name: solar-shrine-db
           property: port
       - key: DB_PASS
-        fromDatabase:
+        fromService:
+          type: postgres
           name: solar-shrine-db
           property: password
       - key: WIKI_ADMIN_EMAIL
@@ -31,7 +35,8 @@ services:
     domains:
       - wiki.solarshrine.org
 
-databases:
-  - name: solar-shrine-db
+  - type: postgres
+    name: solar-shrine-db
     plan: free
-    region: oregon 
+    region: oregon
+    ipAllowList: [] # only allow internal connections 
