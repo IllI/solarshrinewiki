@@ -14,7 +14,9 @@ services:
       - key: DB_NAME
         value: postgres
       - key: DB_SSL
-        value: "true"
+        value: "no-verify"
+      - key: PORT
+        value: "3000"
       - key: DB_HOST
         fromDatabase:
           name: solar-shrine-db
