@@ -4,11 +4,24 @@ services:
     env: docker
     plan: free
     healthCheckPath: /healthz
+    port: 3000
     envVars:
-      - key: DB_URL
-        value: postgresql://postgres.ofnxuxemfvuwipeireuy:solarshrine2025@aws-0-us-east-1.pooler.supabase.com:5432/postgres
+      - key: DB_TYPE
+        value: postgres
+      - key: DB_HOST
+        value: db.ofnxuxemfvuwipeireuy.supabase.co
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASS
+        value: solarshrine2025
+      - key: DB_NAME
+        value: postgres
+      - key: DB_SSL
+        value: "true"
       - key: WIKI_ADMIN_EMAIL
-        value: admin@solarshrine.org # Change to your admin email
+        value: admin@solarshrine.org
     domains:
       - wiki.solarshrine.org
 
