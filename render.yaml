@@ -5,20 +5,8 @@ services:
     plan: free
     healthCheckPath: /healthz
     envVars:
-      - key: DB_TYPE
-        value: postgres
-      - key: DB_HOST
-        value: dpg-d04s23p5pdvs73acmg30-a
-      - key: DB_PORT
-        value: 5432
-      - key: DB_USER
-        value: solar_shrine_db_user
-      - key: DB_PASS
-        sync: false # You'll need to enter the password in the Render dashboard
-      - key: DB_NAME
-        value: solar_shrine_db
-      - key: DB_SSL
-        value: true
+      - key: DB_URL
+        value: postgresql://postgres.ofnxuxemfvuwipeireuy:solarshrine2025@aws-0-us-east-1.pooler.supabase.com:5432/postgres
       - key: WIKI_ADMIN_EMAIL
         value: admin@solarshrine.org # Change to your admin email
     domains:
