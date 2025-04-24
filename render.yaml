@@ -41,7 +41,6 @@ services:
 
   - type: pserv
     name: solar-shrine-db
-    env: docker
     plan: free
-    user: postgres
+    region: oregon
     ipAllowList: [] 
