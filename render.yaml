@@ -33,6 +33,4 @@ services:
   - type: pserv
     name: solar-shrine-db
     plan: free
-    region: oregon
-    databaseName: postgres
-    user: postgres 
+    region: oregon 
