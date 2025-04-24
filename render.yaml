@@ -8,15 +8,15 @@ services:
       - key: DB_TYPE
         value: postgres
       - key: DB_HOST
-        value: dpg-${RENDER_DATABASE_ID}-a.oregon-postgres.render.com
+        value: dpg-d04s23p5pdvs73acmg30-a
       - key: DB_PORT
         value: 5432
       - key: DB_USER
-        value: postgres
+        value: solar_shrine_db_user
       - key: DB_PASS
         sync: false # You'll need to enter the password in the Render dashboard
       - key: DB_NAME
-        value: postgres
+        value: solar_shrine_db
       - key: DB_SSL
         value: true
       - key: WIKI_ADMIN_EMAIL
