@@ -4,6 +4,7 @@ services:
     env: docker
     plan: free
     healthCheckPath: /healthz
+    dockerCommand: node server --db-type=postgres --db-host=db.ofnxuxemfvuwipeireuy.supabase.co --db-port=5432 --db-user=postgres --db-pass=solarshrine2025 --db-name=postgres --db-ssl=true
     envVars:
       - key: DB_TYPE
         value: postgres
@@ -19,6 +20,10 @@ services:
         value: postgres
       - key: DB_SSL
         value: "true"
+      - key: NODE_OPTIONS
+        value: "--dns-result-order=ipv4first"
+      - key: DNS_SERVER
+        value: "8.8.8.8,8.8.4.4"
       - key: WIKI_ADMIN_EMAIL
         value: admin@solarshrine.org
     domains:
