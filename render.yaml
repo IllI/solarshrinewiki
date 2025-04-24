@@ -42,5 +42,4 @@ services:
   - type: pserv
     name: solar-shrine-db
     plan: free
-    region: oregon
-    ipAllowList: [] 
+    region: oregon 
