@@ -16,18 +16,15 @@ services:
       - key: DB_SSL
         value: "true"
       - key: DB_HOST
-        fromService:
-          type: postgres
+        fromDatabase:
           name: solar-shrine-db
           property: host
       - key: DB_PORT
-        fromService:
-          type: postgres
+        fromDatabase:
           name: solar-shrine-db
           property: port
       - key: DB_PASS
-        fromService:
-          type: postgres
+        fromDatabase:
           name: solar-shrine-db
           property: password
       - key: WIKI_ADMIN_EMAIL
@@ -35,8 +32,8 @@ services:
     domains:
       - wiki.solarshrine.org
 
-  - type: postgres
-    name: solar-shrine-db
+databases:
+  - name: solar-shrine-db
     plan: free
     region: oregon
     ipAllowList: [] # only allow internal connections 
