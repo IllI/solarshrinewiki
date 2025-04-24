@@ -30,7 +30,7 @@ services:
     domains:
       - wiki.solarshrine.org
 
-  - type: pserv
-    name: solar-shrine-db
+databases:
+  - name: solar-shrine-db
     plan: free
     region: oregon 
