@@ -8,18 +8,40 @@ services:
       - key: DB_TYPE
         value: postgres
       - key: DB_HOST
-        value: db.ofnxuxemfvuwipeireuy.supabase.co
+        fromService:
+          name: solar-shrine-db
+          type: pserv
+          property: host
       - key: DB_PORT
-        value: 5432
+        fromService:
+          name: solar-shrine-db
+          type: pserv
+          property: port
       - key: DB_USER
-        value: postgres
-      - key: DB_NAME
-        value: postgres
-      - key: DB_SSL
-        value: true
+        fromService:
+          name: solar-shrine-db
+          type: pserv
+          property: user
       - key: DB_PASS
-        sync: false # Password will be set manually in Render dashboard
+        fromService:
+          name: solar-shrine-db
+          type: pserv
+          property: password
+      - key: DB_NAME
+        fromService:
+          name: solar-shrine-db
+          type: pserv
+          property: database
+      - key: DB_SSL
+        value: false
       - key: WIKI_ADMIN_EMAIL
         value: admin@solarshrine.org # Change to your admin email
     domains:
-      - wiki.solarshrine.org 
+      - wiki.solarshrine.org
+
+  - type: pserv
+    name: solar-shrine-db
+    env: docker
+    plan: free
+    user: postgres
+    ipAllowList: [] 

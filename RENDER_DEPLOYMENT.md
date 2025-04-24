@@ -1,10 +1,9 @@
 # Deploying Solar Shrine Wiki to Render.com
 
-This guide walks you through deploying the Solar Shrine Wiki to Render.com with Supabase as the database backend.
+This guide walks you through deploying the Solar Shrine Wiki to Render.com using Render's managed PostgreSQL database.
 
 ## Prerequisites
 
-- A Supabase account with an active project
 - A Render.com account
 - Git repository with your Wiki.js files
 
@@ -14,7 +13,7 @@ This guide walks you through deploying the Solar Shrine Wiki to Render.com with 
 
 First, make sure your repository includes these essential files:
 - `Dockerfile` - Simple configuration for Wiki.js
-- `render.yaml` - Render deployment configuration
+- `render.yaml` - Render deployment configuration with PostgreSQL database
 - `IMPORT_HOMEPAGE.md` - Instructions for importing the homepage after deployment
 
 Push these files to your GitHub repository.
@@ -24,15 +23,16 @@ Push these files to your GitHub repository.
 1. Log in to your Render.com account
 2. Click the "New" button and select "Blueprint"
 3. Connect your GitHub repository
-4. Render will detect the `render.yaml` file and configure your service
-5. You'll be prompted to provide values for environment variables marked with `sync: false`:
-   - `DB_PASS`: Enter your Supabase PostgreSQL password: `solarshrine2025`
-6. Click "Apply" to start the deployment
+4. Render will detect the `render.yaml` file and configure your services:
+   - A Wiki.js web service
+   - A PostgreSQL database with automatic connections
+5. Click "Apply" to start the deployment
 
 ### 3. Wait for Deployment
 
-- Render will build and deploy your Wiki.js instance
+- Render will build and deploy both your Wiki.js instance and PostgreSQL database
 - This process typically takes 5-10 minutes
+- The database will be automatically provisioned and connected to Wiki.js
 
 ### 4. First-Time Setup
 
@@ -50,9 +50,9 @@ Follow the instructions in `IMPORT_HOMEPAGE.md` to set up your wiki homepage.
 ### Database Connection Issues
 
 If you encounter database connection problems:
-1. Check if the Supabase password is correct in the Render environment variables
-2. Verify that your Supabase database allows connections from external services
-3. Ensure the Supabase project is active and not in maintenance mode
+1. Check the Render logs for both the Web Service and the PostgreSQL database
+2. Verify that both services are running correctly
+3. Make sure the web service can access the database (check network settings)
 
 ### Custom Domain Setup
 
@@ -64,4 +64,5 @@ To use a custom domain (e.g., wiki.solarshrine.org):
 ## Maintenance
 
 - Render automatically deploys updates when you push changes to your repository
-- Manage your Wiki.js administration through the admin panel at your-wiki-url/admin 
+- Manage your Wiki.js administration through the admin panel at your-wiki-url/admin
+- Database backups are handled automatically by Render 
