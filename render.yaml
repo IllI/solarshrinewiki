@@ -9,33 +9,21 @@ services:
     envVars:
       - key: DB_TYPE
         value: postgres
+      - key: DB_HOST
+        value: db.ofnxuxemfvuwipeireuy.supabase.co
+      - key: DB_PORT
+        value: "5432"
       - key: DB_USER
         value: postgres
+      - key: DB_PASS
+        value: solarshrine2025
       - key: DB_NAME
         value: postgres
       - key: DB_SSL
         value: "no-verify"
       - key: PORT
         value: "3000"
-      - key: DB_HOST
-        fromDatabase:
-          name: solar-shrine-db
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: solar-shrine-db
-          property: port
-      - key: DB_PASS
-        fromDatabase:
-          name: solar-shrine-db
-          property: password
       - key: WIKI_ADMIN_EMAIL
         value: admin@solarshrine.org
     domains:
-      - wiki.solarshrine.org
-
-databases:
-  - name: solar-shrine-db
-    plan: free
-    region: oregon
-    ipAllowList: [] # only allow internal connections 
+      - wiki.solarshrine.org 
