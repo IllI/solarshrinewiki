@@ -10,17 +10,20 @@ services:
       - key: DB_HOST
         fromService:
           name: solar-shrine-db
-          type: pserv
+          type: pg
           property: host
       - key: DB_PORT
         fromService:
           name: solar-shrine-db
-          type: pserv
+          type: pg
           property: port
       - key: DB_USER
         value: postgres
       - key: DB_PASS
-        generateValue: true
+        fromService:
+          name: solar-shrine-db
+          type: pg
+          property: password
       - key: DB_NAME
         value: postgres
       - key: DB_SSL
