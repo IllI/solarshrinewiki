@@ -18,20 +18,11 @@ services:
           type: pserv
           property: port
       - key: DB_USER
-        fromService:
-          name: solar-shrine-db
-          type: pserv
-          property: user
+        value: postgres
       - key: DB_PASS
-        fromService:
-          name: solar-shrine-db
-          type: pserv
-          property: password
+        generateValue: true
       - key: DB_NAME
-        fromService:
-          name: solar-shrine-db
-          type: pserv
-          property: database
+        value: postgres
       - key: DB_SSL
         value: false
       - key: WIKI_ADMIN_EMAIL
@@ -42,4 +33,6 @@ services:
   - type: pserv
     name: solar-shrine-db
     plan: free
-    region: oregon 
+    region: oregon
+    databaseName: postgres
+    user: postgres 
