@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: solar-shrine-wiki
+    env: docker
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: DB_TYPE
+        value: postgres
+      - key: DB_HOST
+        value: db.ofnxuxemfvuwipeireuy.supabase.co
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USER
+        value: postgres
+      - key: DB_NAME
+        value: postgres
+      - key: DB_SSL
+        value: true
+      - key: DB_PASS
+        sync: false # Password will be set manually in Render dashboard
+      - key: WIKI_ADMIN_EMAIL
+        value: admin@solarshrine.org # Change to your admin email
+    domains:
+      - wiki.solarshrine.org 
